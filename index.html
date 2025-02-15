@@ -1,33 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="referrer" content="no-referrer-when-downgrade" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;900&amp;display=swap" rel="stylesheet" />
-        <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&amp;display=swap" rel="stylesheet" />
-        <link rel="stylesheet" href="/style.css" />
-        <link rel="preload" href="/video.mp4" as="video" />
-        <title>Fakrul</title>
-        <meta name="description" content="Tekan Start Dibawah - Fakrul" />
-        <meta name="og:title" content="Fakrul" />
-        <meta name="og:type" content="website" />
-        <meta name="theme-color" content="#d64224" />
-    </head>
+<head>
+    <meta charset="utf-8" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;900&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&amp;display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="preload" href="/video.mp4" as="video" />
+    <title>Fakrul</title>
+    <meta name="description" content="Tekan Start Dibawah - Fakrul" />
+    <meta name="og:title" content="Fakrul" />
+    <meta name="og:type" content="website" />
+    <meta name="theme-color" content="#d64224" />
+    <style>
+        /* Tambahkan gaya untuk menyembunyikan video */
+        #game {
+            display: none; /* Sembunyikan video saat dimulai */
+        }
+        #overlay {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            flex-direction: column;
+        }
+    </style>
+</head>
 
-    <body>
-        <div id="overlay">
-            <div class="content">
-                <img src="/warn.png" />
-                <p>Sebuah Game Yang Seru</p>
-                <button id="start">Start Game</button>
-            </div>
-            <div id="notice">ini cuma game.</div>
+<body>
+    <div id="overlay">
+        <div class="content">
+            <img src="/warn.png" />
+            <p>Sebuah Game Yang Seru</p>
+            <button id="start">Start Game</button>
         </div>
-        <div id="game">
-            <video id="video" class="video" src="/video.mp4" loop=""></video>
-        </div>
-        <script type="text/javascript" src="/script.js"></script>
-    </body>
+        <div id="notice">ini cuma game.</div>
+    </div>
+    <div id="game">
+        <video id="video" class="video" src="/video.mp4" loop=""></video>
+    </div>
+    <script type="text/javascript" src="/script.js"></script>
+    <script>
+        document.getElementById('start').addEventListener('click', function() {
+            // Sembunyikan overlay dan tampilkan video
+            document.getElementById('overlay').style.display = 'none';
+            const video = document.getElementById('video');
+            video.volume = 1.0; // Atur volume ke maksimum
+            video.style.display = 'block'; // Tampilkan video
+            video.play(); // Mulai memutar video
+        });
+    </script>
+</body>
 </html>
